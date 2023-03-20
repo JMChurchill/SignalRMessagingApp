@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "WvIdi4q95cokcZunRa0UUHEiS0EpnVY3lIw0EZZ/4HdmxD3PFOqTJk80FSgrWd8Ug63PeahSUIrjqjRtNj4R9g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatService\\ChatService.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\joshua.churchill\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\joshua.churchill\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\joshua.churchill\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\joshua.churchill\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\joshua.churchill\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\joshua.churchill\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
