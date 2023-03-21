@@ -10,7 +10,7 @@ const TextInput = ({ placeholder, onChange, value }: TextInputProps) => {
     <input
       type={"text"}
       placeholder={placeholder}
-      className="rounded-md"
+      className="rounded-md focus:ring-teal-400 focus:border-teal-400"
       value={value}
       onChange={(e) => onChange(e.target.value)}
     />

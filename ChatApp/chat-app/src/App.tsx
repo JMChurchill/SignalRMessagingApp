@@ -13,7 +13,8 @@ export type MessageType = {
 
 function App() {
   const [connection, setConnection] = useState<HubConnection>();
-  const [theMessages, setMessages] = useState<MessageType[]>([]);
+  const [messages, setMessages] = useState<MessageType[]>([]);
+  const [users, setUsers] = useState<string[]>([]);
   const joinRoom = async (user: string, room: string) => {
     try {
       const connection = new HubConnectionBuilder()
@@ -21,7 +22,16 @@ function App() {
         .configureLogging(LogLevel.Information)
         .build();
       connection.on("ReceiveMessage", (user, message) => {
-        setMessages([...theMessages, { user, message }]);
+        setMessages((messages) => [...messages, { user, message }]);
+      });
+      connection.on("UsersInRoom", (users) => {
+        setUsers(users);
+      });
+
+      connection.onclose((e) => {
+        setConnection(undefined);
+        setMessages([]);
+        setUsers([]);
       });
       await connection.start();
       await connection.invoke("JoinRoom", { user, room });
@@ -30,11 +40,6 @@ function App() {
       console.log(error);
     }
   };
-  useEffect(() => {
-    console.log("---");
-
-    console.log(theMessages);
-  }, [theMessages]);
 
   const sendMessage = async (message: string) => {
     try {
@@ -43,15 +48,27 @@ function App() {
       console.log(error);
     }
   };
+  const closeConnection = async () => {
+    try {
+      await connection?.stop();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className={"flex flex-col justify-center items-center p-4"}>
       <h1>Chat</h1>
-      <div className="w-1/2 p-4">
+      <div className="w-2/3 p-4">
         {!connection ? (
           <Lobby joinRoom={joinRoom} />
         ) : (
-          <Chat messages={theMessages} sendMessage={sendMessage} />
+          <Chat
+            messages={messages}
+            sendMessage={sendMessage}
+            closeConnection={closeConnection}
+            users={users}
+          />
         )}
       </div>
     </div>

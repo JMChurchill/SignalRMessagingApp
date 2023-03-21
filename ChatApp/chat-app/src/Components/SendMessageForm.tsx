@@ -14,8 +14,10 @@ const SendMessageForm = ({ sendMessage }: SendMessageFormProps) => {
         sendMessage(message);
         setMessages("");
       }}
+      className="grid gap-2"
+      style={{ gridTemplateColumns: "1fr auto" }}
     >
-      <TextInput placeholder="message" onChange={setMessages} value={message} />{" "}
+      <TextInput placeholder="message" onChange={setMessages} value={message} />
       <Button disabled={!message}>Send</Button>{" "}
     </form>
   );
