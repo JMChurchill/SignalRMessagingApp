@@ -1,0 +1,17 @@
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDatabase\bin\Debug\net6.0\ChatDatabase.deps.json
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDatabase\bin\Debug\net6.0\ChatDatabase.runtimeconfig.json
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDatabase\bin\Debug\net6.0\ChatDatabase.dll
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDatabase\bin\Debug\net6.0\ChatDatabase.pdb
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDatabase\obj\Debug\net6.0\ChatDatabase.csproj.AssemblyReference.cache
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDatabase\obj\Debug\net6.0\ChatDatabase.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDatabase\obj\Debug\net6.0\ChatDatabase.AssemblyInfoInputs.cache
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDatabase\obj\Debug\net6.0\ChatDatabase.AssemblyInfo.cs
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDatabase\obj\Debug\net6.0\ChatDatabase.csproj.CoreCompileInputs.cache
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDatabase\obj\Debug\net6.0\ChatDatabase.csproj.CopyComplete
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDatabase\obj\Debug\net6.0\ChatDatabase.dll
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDatabase\obj\Debug\net6.0\refint\ChatDatabase.dll
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDatabase\obj\Debug\net6.0\ChatDatabase.pdb
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDatabase\obj\Debug\net6.0\ChatDatabase.genruntimeconfig.cache
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDatabase\obj\Debug\net6.0\ref\ChatDatabase.dll
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDatabase\bin\Debug\net6.0\ChatDataTypes.dll
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDatabase\bin\Debug\net6.0\ChatDataTypes.pdb

@@ -4,14 +4,104 @@
     "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatService\\ChatService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatService\\ChatService.csproj": {
+    "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatDatabase\\ChatDatabase.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatService\\ChatService.csproj",
-        "projectName": "ChatService",
-        "projectPath": "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatService\\ChatService.csproj",
+        "projectUniqueName": "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatDatabase\\ChatDatabase.csproj",
+        "projectName": "ChatDatabase",
+        "projectPath": "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatDatabase\\ChatDatabase.csproj",
         "packagesPath": "C:\\Users\\joshua.churchill\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatService\\obj\\",
+        "outputPath": "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatDatabase\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\joshua.churchill\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://dirac.aardman.com/Internal%20Web%20Apps/WebAPIClientLibrary/_packaging/WebAPIClientLibrary2%40Release/nuget/v3/index.json": {},
+          "https://dirac.aardman.com/Internal%20Web%20Apps/_packaging/Aard.AardcoreAPIClientLibraries/nuget/v3/index.json": {},
+          "https://dirac.aardman.com/Internal%20Web%20Apps/_packaging/AardPackages/nuget/v3/index.json": {},
+          "https://dirac.aardman.com/Internal%20Web%20Apps/_packaging/Aardcore22DataTypes/nuget/v3/index.json": {},
+          "https://dirac.aardman.com/Internal%20Web%20Apps/_packaging/WebAPIClientLibrary/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatDataTypes\\ChatDataTypes.csproj": {
+                "projectPath": "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatDataTypes\\ChatDataTypes.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatDataTypes\\ChatDataTypes.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatDataTypes\\ChatDataTypes.csproj",
+        "projectName": "ChatDataTypes",
+        "projectPath": "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatDataTypes\\ChatDataTypes.csproj",
+        "packagesPath": "C:\\Users\\joshua.churchill\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatDataTypes\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -48,7 +138,84 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatService\\ChatService.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatService\\ChatService.csproj",
+        "projectName": "ChatService",
+        "projectPath": "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatService\\ChatService.csproj",
+        "packagesPath": "C:\\Users\\joshua.churchill\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatService\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\joshua.churchill\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://dirac.aardman.com/Internal%20Web%20Apps/WebAPIClientLibrary/_packaging/WebAPIClientLibrary2%40Release/nuget/v3/index.json": {},
+          "https://dirac.aardman.com/Internal%20Web%20Apps/_packaging/Aard.AardcoreAPIClientLibraries/nuget/v3/index.json": {},
+          "https://dirac.aardman.com/Internal%20Web%20Apps/_packaging/AardPackages/nuget/v3/index.json": {},
+          "https://dirac.aardman.com/Internal%20Web%20Apps/_packaging/Aardcore22DataTypes/nuget/v3/index.json": {},
+          "https://dirac.aardman.com/Internal%20Web%20Apps/_packaging/WebAPIClientLibrary/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatDatabase\\ChatDatabase.csproj": {
+                "projectPath": "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatDatabase\\ChatDatabase.csproj"
+              },
+              "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatDataTypes\\ChatDataTypes.csproj": {
+                "projectPath": "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatDataTypes\\ChatDataTypes.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"

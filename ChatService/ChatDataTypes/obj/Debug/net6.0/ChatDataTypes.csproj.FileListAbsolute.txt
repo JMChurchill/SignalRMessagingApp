@@ -1,0 +1,12 @@
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDataTypes\bin\Debug\net6.0\ChatDataTypes.deps.json
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDataTypes\bin\Debug\net6.0\ChatDataTypes.dll
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDataTypes\bin\Debug\net6.0\ChatDataTypes.pdb
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDataTypes\obj\Debug\net6.0\ChatDataTypes.csproj.AssemblyReference.cache
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDataTypes\obj\Debug\net6.0\ChatDataTypes.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDataTypes\obj\Debug\net6.0\ChatDataTypes.AssemblyInfoInputs.cache
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDataTypes\obj\Debug\net6.0\ChatDataTypes.AssemblyInfo.cs
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDataTypes\obj\Debug\net6.0\ChatDataTypes.csproj.CoreCompileInputs.cache
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDataTypes\obj\Debug\net6.0\ChatDataTypes.dll
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDataTypes\obj\Debug\net6.0\refint\ChatDataTypes.dll
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDataTypes\obj\Debug\net6.0\ChatDataTypes.pdb
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatDataTypes\obj\Debug\net6.0\ref\ChatDataTypes.dll

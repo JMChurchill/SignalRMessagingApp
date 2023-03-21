@@ -1,7 +1,7 @@
 import { HubConnectionBuilder } from "@microsoft/signalr";
 import { HubConnection } from "@microsoft/signalr/dist/esm/HubConnection";
 import { LogLevel } from "@microsoft/signalr/dist/esm/ILogger";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Chat from "./Components/Chat";
 import Lobby from "./Components/Lobby";
