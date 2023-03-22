@@ -1,0 +1,33 @@
+.background {
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: fadeIn var(--transition-speed) ease-in;
+  z-index: var(--modal-z-index);
+}
+
+.background .body {
+  transition: all 1s ease-in-out;
+  box-sizing: border-box;
+  animation: slideUp var(--transition-speed) ease-in;
+  /* overflow-y: auto; */
+  /* background-color: var(--forground-color); */
+  /* max-width: 90%;
+  max-height: 90%; */
+  /* padding: 1rem 2rem; */
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+  }
+}

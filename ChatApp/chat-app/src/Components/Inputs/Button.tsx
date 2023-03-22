@@ -4,7 +4,7 @@ type ButtonProps = {
   variant?: "default" | "red" | "green";
   children: string;
   disabled?: boolean;
-  onClick?: (() => void) | null;
+  onClick?: ((a: any) => void) | null;
 };
 const Button = ({
   variant = "default",

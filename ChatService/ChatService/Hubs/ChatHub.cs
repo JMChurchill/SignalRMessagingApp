@@ -1,4 +1,7 @@
-﻿using ChatService.Models;
+﻿using ChatDatabase;
+using ChatDataTypes.DTO;
+using ChatService.Models;
+using ChatService.Repository;
 using Microsoft.AspNetCore.SignalR;
 
 namespace ChatService.Hubs
@@ -6,47 +9,86 @@ namespace ChatService.Hubs
     public class ChatHub : Hub
     {
         private readonly string _botUser;
+        private readonly DataContext _context;
+        MessageRepository _messageRepository;
+        UserRepository _userRepository;
         private readonly IDictionary<string, UserConnection> _connections;
-        public ChatHub(IDictionary<string, UserConnection> connections)
+
+        public ChatHub(IDictionary<string, UserConnection> connections, DataContext context)
         {
-            _botUser = "MyChat Bot";
+            _botUser = "Chat Bot";
             _connections = connections;
+            _context = context;
+            _messageRepository = new MessageRepository(context);
+            _userRepository = new UserRepository(context);
         }
 
-        public override Task OnDisconnectedAsync(Exception? exception)
+        public override async Task<Task> OnDisconnectedAsync(Exception? exception)
         {
             if(_connections.TryGetValue(Context.ConnectionId, out UserConnection userConnection))
             {
                 _connections.Remove(Context.ConnectionId);
-                Clients.Group(userConnection.Room).SendAsync("ReceiveMessage", _botUser, $"{userConnection.User} has left {userConnection.Room}");
+                Random rand = new Random();
+                int number = rand.Next(0, 100);
+
+                RoomRepository roomRepository = new RoomRepository(_context);
+                var roomName = (await roomRepository.GetRoom(userConnection.RoomId)).Name;
+
+                Message newMessage = new Message { Id = -1 * (number + 99), Text = $"{userConnection.User} has left {roomName}", User = new User { Name = _botUser } };
+
+                //await Clients.Group(userConnection.RoomId.ToString()).SendAsync("ReceiveMessage", newMessage);
+
+                Clients.Group(userConnection.RoomId.ToString()).SendAsync("ReceiveMessage", newMessage);
             }
             return base.OnDisconnectedAsync(exception);
         }
 
         public async Task SendMessage(string message)
         {
-            if(_connections.TryGetValue(Context.ConnectionId, out UserConnection userConnection))
+            if (_connections.TryGetValue(Context.ConnectionId, out UserConnection userConnection))
             {
-                await Clients.Groups(userConnection.Room).SendAsync("ReceiveMessage", userConnection.User, message);
+                var messages = await _messageRepository.GetDetailedMessagesByRoom(userConnection.RoomId);
+                var newMessage = await _messageRepository.CreateMessage(userConnection.RoomId, message, (int)userConnection.UserId);
+                await Clients.Groups(userConnection.RoomId.ToString()).SendAsync("ReceiveMessage", newMessage);
             }
         }
-        public async Task JoinRoom(UserConnection userConnection)
+
+        public async Task<bool> JoinRoom(UserConnectionDTO newUserConnection)
         {
-            await Groups.AddToGroupAsync(Context.ConnectionId, userConnection.Room);
+            var userId = await _userRepository.GetUserId(newUserConnection.Username);
+            if (userId is not null)
+            {
+                UserConnection userConnection = new UserConnection { UserId = userId, RoomId = newUserConnection.RoomId, User = newUserConnection.Username };
+                userConnection.UserId = (int)userId;
+                await Groups.AddToGroupAsync(Context.ConnectionId, userConnection.RoomId.ToString());
 
-            _connections[Context.ConnectionId] = userConnection;
+                RoomRepository roomRepository = new RoomRepository(_context);
+                var roomName = (await roomRepository.GetRoom(userConnection.RoomId)).Name;
 
-            await Clients.Group(userConnection.Room).SendAsync("ReceiveMessage", _botUser, $"{userConnection.User} has joined {userConnection.Room}");
+                _connections[Context.ConnectionId] = userConnection;
 
-            await SendConnectedUsers(userConnection.Room);
+                Random rand = new Random();
+                int number = rand.Next(0, 100);
+
+                Message newMessage = new Message { Id = -1 * (number + 99), Text = $"{userConnection.User} has joined {roomName}", User = new User { Name = _botUser } };
+
+                await Clients.Group(userConnection.RoomId.ToString()).SendAsync("ReceiveMessage", newMessage);
+
+                await SendConnectedUsers(userConnection.RoomId);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
         }
 
-        public Task SendConnectedUsers(string room)
+        public Task SendConnectedUsers(int roomId)
         {
-            var users = _connections.Values.Where(c => c.Room == room).Select(c => c.User).ToList();
+            var users = _connections.Values.Where(c => c.RoomId == roomId).Select(c => c.User).ToList();
 
-            return Clients.Group(room).SendAsync("UsersInRoom", users);
+            return Clients.Group(roomId.ToString()).SendAsync("UsersInRoom", users);
         }
     }
 }

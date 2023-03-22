@@ -1,6 +1,7 @@
 using ChatDatabase;
 using ChatService.Hubs;
 using ChatService.Models;
+using ChatService.Repository;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 
@@ -34,8 +35,7 @@ builder.Services.AddCors(options =>
         });
 });
 
-builder.Services.AddSingleton<IDictionary<string,UserConnection>>(opts => new Dictionary<string,UserConnection>());
-
+builder.Services.AddSingleton<IDictionary<string, UserConnection>>(opts => new Dictionary<string, UserConnection>());
 
 
 var app = builder.Build();

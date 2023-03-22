@@ -10,7 +10,6 @@ namespace ChatService.Controllers
     public class UserController : ControllerBase
     {
         private readonly DataContext _context;
-
         public UserController(DataContext dataContext)
         {
             _context = dataContext;
@@ -39,7 +38,6 @@ namespace ChatService.Controllers
         [HttpPut]
         public async Task<ActionResult<List<User>>> EditUser(int id, string name)
         {
-            User newUser = new User { Name = name };
             var user = await _context.Users.FindAsync(id);
             if (user is null) return BadRequest("User not found");
 
