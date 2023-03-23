@@ -2,10 +2,14 @@
 using ChatDataTypes.DTO;
 using ChatService.Models;
 using ChatService.Repository;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
+using System.Security.Claims;
 
 namespace ChatService.Hubs
 {
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ChatHub : Hub
     {
         private readonly string _botUser;
@@ -55,10 +59,15 @@ namespace ChatService.Hubs
 
         public async Task<bool> JoinRoom(UserConnectionDTO newUserConnection)
         {
-            var userId = await _userRepository.GetUserId(newUserConnection.Username);
-            if (userId is not null)
+            var userIdString = Context.User.FindFirstValue(ClaimTypes.GroupSid);
+
+            if (!int.TryParse(userIdString, out int userId)) return false;
+            //var userId = await _userRepository.GetUserId(newUserConnection.Username);
+            if (userId != 0)
             {
-                UserConnection userConnection = new UserConnection { UserId = userId, RoomId = newUserConnection.RoomId, User = newUserConnection.Username };
+                // get username from db
+                var user = await _userRepository.GetUser(userId);
+                UserConnection userConnection = new UserConnection { UserId = userId, RoomId = newUserConnection.RoomId, User = user.Name };
                 userConnection.UserId = (int)userId;
                 await Groups.AddToGroupAsync(Context.ConnectionId, userConnection.RoomId.ToString());
 

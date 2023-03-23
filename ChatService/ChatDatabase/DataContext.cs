@@ -1,4 +1,5 @@
-﻿using ChatService.Models;
+﻿using ChatDataTypes;
+using ChatService.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 
@@ -9,6 +10,8 @@ namespace ChatDatabase
         public DbSet<User> Users { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; } = null!;
+
         public DataContext(DbContextOptions<DataContext> options):base(options){ }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
