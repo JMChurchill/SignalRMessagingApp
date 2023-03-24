@@ -1,8 +1,7 @@
 ﻿using ChatDatabase;
-using ChatDataTypes.DTO;
+using ChatDataTypes.DTOs;
 using ChatRepository;
 using ChatService.Models;
-using ChatService.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
@@ -14,18 +13,15 @@ namespace ChatService.Hubs
     public class ChatHub : Hub
     {
         private readonly string _botUser;
-        private readonly DataContext _context;
-        IMessageRepository _messageRepository;
-        IUserRepository _userRepository;
+        private readonly IMessageRepository _messageRepository;
+        private readonly IUserRepository _userRepository;
         private readonly IRoomRepository _roomRepository;
         private readonly IDictionary<string, UserConnection> _connections;
 
-        public ChatHub(IDictionary<string, UserConnection> connections, DataContext context, IMessageRepository messageRepository, IUserRepository userRepository, IRoomRepository roomRepository)
+        public ChatHub(IDictionary<string, UserConnection> connections, IMessageRepository messageRepository, IUserRepository userRepository, IRoomRepository roomRepository)
         {
             _botUser = "Chat Bot";
             _connections = connections;
-            _context = context;
-
             _messageRepository = messageRepository;
             _userRepository = userRepository;
             _roomRepository = roomRepository;
@@ -43,8 +39,6 @@ namespace ChatService.Hubs
 
                 Message newMessage = new Message { Id = -1 * (number + 99), Text = $"{userConnection.User} has left {roomName}", User = new User { Name = _botUser } };
 
-                //await Clients.Group(userConnection.RoomId.ToString()).SendAsync("ReceiveMessage", newMessage);
-
                 Clients.Group(userConnection.RoomId.ToString()).SendAsync("ReceiveMessage", newMessage);
             }
             return base.OnDisconnectedAsync(exception);
@@ -54,7 +48,6 @@ namespace ChatService.Hubs
         {
             if (_connections.TryGetValue(Context.ConnectionId, out UserConnection userConnection))
             {
-                var messages = await _messageRepository.GetDetailedMessagesByRoom(userConnection.RoomId);
                 var newMessage = await _messageRepository.CreateMessage(userConnection.RoomId, message, (int)userConnection.UserId);
                 await Clients.Groups(userConnection.RoomId.ToString()).SendAsync("ReceiveMessage", newMessage);
             }

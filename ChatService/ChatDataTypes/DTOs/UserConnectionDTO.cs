@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChatDataTypes.DTO
+namespace ChatDataTypes.DTOs
 {
     public class UserConnectionDTO
     {

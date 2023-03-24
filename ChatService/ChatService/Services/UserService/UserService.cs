@@ -24,7 +24,7 @@ namespace ChatService.Services
         public string GetName()
         {
             var result = string.Empty;
-            if(_httpContextAccessor.HttpContext != null)
+            if (_httpContextAccessor.HttpContext != null)
             {
                 result = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.Name);
             }

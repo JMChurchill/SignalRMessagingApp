@@ -1,4 +1,4 @@
-﻿using ChatDataTypes.DTO;
+﻿using ChatDataTypes.DTOs;
 using ChatRepository;
 using ChatService.Models;
 using ChatService.Services;
@@ -11,16 +11,14 @@ namespace ChatService.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly IConfiguration _configuration;
         private readonly IUserService _userService;
         private readonly ITokenService _tokenService;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IUserRepository _userRepository;
         private readonly IRefreshTokenRepository _refreshTokenRepository;
 
-        public AuthController(IConfiguration configuration, IUserService userService, ITokenService tokenService, IHttpContextAccessor httpContextAccessor, IUserRepository userRepository, IRefreshTokenRepository refreshTokenRepository)
+        public AuthController(IUserService userService, ITokenService tokenService, IHttpContextAccessor httpContextAccessor, IUserRepository userRepository, IRefreshTokenRepository refreshTokenRepository)
         {
-            _configuration = configuration;
             _userService = userService;
             _tokenService = tokenService;
             _httpContextAccessor = httpContextAccessor;
