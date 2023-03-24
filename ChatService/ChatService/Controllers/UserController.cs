@@ -1,7 +1,6 @@
-﻿using ChatDatabase;
+﻿using ChatRepository;
 using ChatService.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace ChatService.Controllers
 {
@@ -9,52 +8,53 @@ namespace ChatService.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly DataContext _context;
-        public UserController(DataContext dataContext)
+        private readonly IUserRepository _userRepository;
+
+        public UserController(IUserRepository userRepository)
         {
-            _context = dataContext;
+            _userRepository = userRepository;
         }
 
         [HttpGet]
         public async Task<ActionResult<List<User>>> Get()
         {
-            return Ok(await _context.Users.ToListAsync());
+            return Ok(await _userRepository.GetUsers());
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> Get(int id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _userRepository.GetUser(id);
             if (user is null) return BadRequest("User not found");
+
             return Ok(user);
         }
         [HttpPost]
         public async Task<ActionResult<List<User>>> AddUser(string name)
         {
             User newUser = new User { Name = name };
-            _context.Users.Add(newUser);
-            await _context.SaveChangesAsync();
-            return Ok(await _context.Users.ToListAsync());
+            await _userRepository.CreateUser(newUser);
+
+            return Ok(await _userRepository.GetUsers());
         }
         [HttpPut]
         public async Task<ActionResult<List<User>>> EditUser(int id, string name)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _userRepository.GetUser(id);
             if (user is null) return BadRequest("User not found");
 
-            user.Name = name;
-            await _context.SaveChangesAsync();
+            if (!await _userRepository.UpdateUser(id, name)) return BadRequest("Unable to update user");
 
-            return Ok(await _context.Users.ToListAsync());
+            return Ok(await _userRepository.GetUsers());
         }
         [HttpDelete]
         public async Task<ActionResult<List<User>>> DeleteUser(int id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _userRepository.GetUser(id);
             if (user is null) return BadRequest("User not found");
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
 
-            return Ok(await _context.Users.ToListAsync());
+            if (!await _userRepository.DeleteUser(id)) return BadRequest("Unable to delete user");
+
+            return Ok(await _userRepository.GetUsers());
         }
     }
 }

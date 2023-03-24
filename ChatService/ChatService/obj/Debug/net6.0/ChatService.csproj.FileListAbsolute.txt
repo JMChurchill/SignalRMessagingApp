@@ -90,3 +90,5 @@ C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatS
 C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatService\obj\Debug\net6.0\ChatService.genruntimeconfig.cache
 C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatService\obj\Debug\net6.0\ref\ChatService.dll
 C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatService\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatService\bin\Debug\net6.0\ChatRepository.dll
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatService\bin\Debug\net6.0\ChatRepository.pdb

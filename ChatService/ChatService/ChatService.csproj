@@ -18,6 +18,11 @@
   <ItemGroup>
     <ProjectReference Include="..\ChatDatabase\ChatDatabase.csproj" />
     <ProjectReference Include="..\ChatDataTypes\ChatDataTypes.csproj" />
+    <ProjectReference Include="..\ChatRepository\ChatRepository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Repository\" />
   </ItemGroup>
 
 </Project>

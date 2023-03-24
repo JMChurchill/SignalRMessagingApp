@@ -10,6 +10,7 @@
         "dependencies": {
           "ChatDataTypes": "1.0.0",
           "ChatDatabase": "1.0.0",
+          "ChatRepository": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.15",
           "Microsoft.EntityFrameworkCore.Design": "7.0.4",
           "Swashbuckle.AspNetCore": "6.2.3"
@@ -768,6 +769,14 @@
         "runtime": {
           "ChatDataTypes.dll": {}
         }
+      },
+      "ChatRepository/1.0.0": {
+        "dependencies": {
+          "ChatDatabase": "1.0.0"
+        },
+        "runtime": {
+          "ChatRepository.dll": {}
+        }
       }
     }
   },
@@ -1301,6 +1310,11 @@
       "sha512": ""
     },
     "ChatDataTypes/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ChatRepository/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

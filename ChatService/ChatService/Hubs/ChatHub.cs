@@ -1,5 +1,6 @@
 ﻿using ChatDatabase;
 using ChatDataTypes.DTO;
+using ChatRepository;
 using ChatService.Models;
 using ChatService.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -14,17 +15,20 @@ namespace ChatService.Hubs
     {
         private readonly string _botUser;
         private readonly DataContext _context;
-        MessageRepository _messageRepository;
-        UserRepository _userRepository;
+        IMessageRepository _messageRepository;
+        IUserRepository _userRepository;
+        private readonly IRoomRepository _roomRepository;
         private readonly IDictionary<string, UserConnection> _connections;
 
-        public ChatHub(IDictionary<string, UserConnection> connections, DataContext context)
+        public ChatHub(IDictionary<string, UserConnection> connections, DataContext context, IMessageRepository messageRepository, IUserRepository userRepository, IRoomRepository roomRepository)
         {
             _botUser = "Chat Bot";
             _connections = connections;
             _context = context;
-            _messageRepository = new MessageRepository(context);
-            _userRepository = new UserRepository(context);
+
+            _messageRepository = messageRepository;
+            _userRepository = userRepository;
+            _roomRepository = roomRepository;
         }
 
         public override async Task<Task> OnDisconnectedAsync(Exception? exception)
@@ -35,8 +39,7 @@ namespace ChatService.Hubs
                 Random rand = new Random();
                 int number = rand.Next(0, 100);
 
-                RoomRepository roomRepository = new RoomRepository(_context);
-                var roomName = (await roomRepository.GetRoom(userConnection.RoomId)).Name;
+                var roomName = (await _roomRepository.GetRoom(userConnection.RoomId)).Name;
 
                 Message newMessage = new Message { Id = -1 * (number + 99), Text = $"{userConnection.User} has left {roomName}", User = new User { Name = _botUser } };
 
@@ -62,7 +65,6 @@ namespace ChatService.Hubs
             var userIdString = Context.User.FindFirstValue(ClaimTypes.GroupSid);
 
             if (!int.TryParse(userIdString, out int userId)) return false;
-            //var userId = await _userRepository.GetUserId(newUserConnection.Username);
             if (userId != 0)
             {
                 // get username from db
@@ -71,8 +73,7 @@ namespace ChatService.Hubs
                 userConnection.UserId = (int)userId;
                 await Groups.AddToGroupAsync(Context.ConnectionId, userConnection.RoomId.ToString());
 
-                RoomRepository roomRepository = new RoomRepository(_context);
-                var roomName = (await roomRepository.GetRoom(userConnection.RoomId)).Name;
+                var roomName = (await _roomRepository.GetRoom(userConnection.RoomId)).Name;
 
                 _connections[Context.ConnectionId] = userConnection;
 

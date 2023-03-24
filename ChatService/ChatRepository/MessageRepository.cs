@@ -1,10 +1,11 @@
 ﻿using ChatDatabase;
+using ChatRepository;
 using ChatService.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace ChatService.Repository
 {
-    public class MessageRepository
+    public class MessageRepository : IMessageRepository
     {
         private readonly DataContext _context;
         public MessageRepository(DataContext dataContext)

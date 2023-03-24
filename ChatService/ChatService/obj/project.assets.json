@@ -1274,6 +1274,19 @@
         "runtime": {
           "bin/placeholder/ChatDataTypes.dll": {}
         }
+      },
+      "ChatRepository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "ChatDatabase": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ChatRepository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ChatRepository.dll": {}
+        }
       }
     }
   },
@@ -3744,12 +3757,18 @@
       "type": "project",
       "path": "../ChatDataTypes/ChatDataTypes.csproj",
       "msbuildProject": "../ChatDataTypes/ChatDataTypes.csproj"
+    },
+    "ChatRepository/1.0.0": {
+      "type": "project",
+      "path": "../ChatRepository/ChatRepository.csproj",
+      "msbuildProject": "../ChatRepository/ChatRepository.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "ChatDataTypes >= 1.0.0",
       "ChatDatabase >= 1.0.0",
+      "ChatRepository >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.15",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.4",
       "Swashbuckle.AspNetCore >= 6.2.3"
@@ -3797,6 +3816,9 @@
             },
             "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatDataTypes\\ChatDataTypes.csproj": {
               "projectPath": "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatDataTypes\\ChatDataTypes.csproj"
+            },
+            "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatRepository\\ChatRepository.csproj": {
+              "projectPath": "C:\\Users\\joshua.churchill\\Documents\\GitHub\\SignalRMessagingApp\\ChatService\\ChatRepository\\ChatRepository.csproj"
             }
           }
         }

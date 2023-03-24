@@ -1,0 +1,17 @@
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatRepository\bin\Debug\net6.0\ChatRepository.deps.json
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatRepository\bin\Debug\net6.0\ChatRepository.dll
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatRepository\bin\Debug\net6.0\ChatRepository.pdb
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatRepository\bin\Debug\net6.0\ChatDatabase.dll
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatRepository\bin\Debug\net6.0\ChatDataTypes.dll
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatRepository\bin\Debug\net6.0\ChatDatabase.pdb
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatRepository\bin\Debug\net6.0\ChatDataTypes.pdb
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatRepository\obj\Debug\net6.0\ChatRepository.csproj.AssemblyReference.cache
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatRepository\obj\Debug\net6.0\ChatRepository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatRepository\obj\Debug\net6.0\ChatRepository.AssemblyInfoInputs.cache
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatRepository\obj\Debug\net6.0\ChatRepository.AssemblyInfo.cs
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatRepository\obj\Debug\net6.0\ChatRepository.csproj.CoreCompileInputs.cache
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatRepository\obj\Debug\net6.0\ChatRepository.csproj.CopyComplete
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatRepository\obj\Debug\net6.0\ChatRepository.dll
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatRepository\obj\Debug\net6.0\refint\ChatRepository.dll
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatRepository\obj\Debug\net6.0\ChatRepository.pdb
+C:\Users\joshua.churchill\Documents\GitHub\SignalRMessagingApp\ChatService\ChatRepository\obj\Debug\net6.0\ref\ChatRepository.dll

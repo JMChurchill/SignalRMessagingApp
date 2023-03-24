@@ -1,4 +1,5 @@
 ﻿using ChatDatabase;
+using ChatRepository;
 using ChatService.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -12,15 +13,16 @@ namespace ChatService.Controllers
     [Authorize]
     public class MessageController : ControllerBase
     {
-        private readonly DataContext _context;
-        public MessageController(DataContext dataContext)
+        private readonly IMessageRepository _messageRepository;
+
+        public MessageController(IMessageRepository messageRepository)
         {
-            _context = dataContext;
+            _messageRepository = messageRepository;
         }
         [HttpGet("room/{roomId}")]
         public async Task<ActionResult<List<Message>>> Get(int roomId)
         {
-            var messages = await _context.Messages.Where(m=>m.RoomId == roomId).Include(m => m.User).ToListAsync();
+            var messages = await _messageRepository.GetDetailedMessagesByRoom(roomId);
             if (messages is null) return BadRequest("Unable to get messages");
 
             return Ok(messages);
