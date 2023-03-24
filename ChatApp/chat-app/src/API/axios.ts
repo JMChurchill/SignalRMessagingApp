@@ -5,7 +5,6 @@ console.log(REACT_APP_CHAT_API_URL);
 
 export const ChatAPI = axios.create({
   baseURL: REACT_APP_CHAT_API_URL,
-  // baseURL: "https://localhost:7274/api/",
   headers: {
     "Content-Type": "application/json",
   },

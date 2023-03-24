@@ -8,6 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import useMessage from "../API/Services/useMessages";
 import useRooms from "../API/Services/useRooms";
 import Chat from "../Components/Chat";
+import ErrorMessage from "../Components/ErrorMessage";
 import useToken from "../Hooks/useToken";
 import { toastyErrorMessage } from "../Utils/toastTypes";
 
@@ -25,6 +26,7 @@ const ChatPage = () => {
   const [messages, setMessages] = useState<MessageType[]>([]);
   const [users, setUsers] = useState<string[]>([]);
   const [roomName, setRoomName] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<null | string>(null);
 
   const { getMessages: getMessagesByRoom } = useMessage();
   const { getRoom: getRoomById } = useRooms();
@@ -38,18 +40,29 @@ const ChatPage = () => {
   };
   const getRoom = async (id: string) => {
     const resp = await getRoomById(id);
-    setRoomName(resp.data?.name);
+    if (resp.error) {
+      setErrorMessage(
+        resp.error.message ? resp.error.message : "Unable to get room name"
+      );
+    } else setRoomName(resp.data?.data?.name);
   };
   const getMessages = async (id: string) => {
     const resp = await getMessagesByRoom(id);
-    setMessages(
-      resp.data.map((mes: { text: any; user: { name: string } }) => {
-        return {
-          message: mes.text,
-          user: mes.user.name,
-        };
-      })
-    );
+
+    if (resp.error) {
+      setErrorMessage(
+        resp.error.message ? resp.error.message : "Unable to get messages"
+      );
+    } else {
+      setMessages(
+        resp.data.data.map((mes: { text: any; user: { name: string } }) => {
+          return {
+            message: mes.text,
+            user: mes.user.name,
+          };
+        })
+      );
+    }
   };
 
   useEffect(() => {
@@ -92,7 +105,6 @@ const ChatPage = () => {
           setConnection(connection);
         else {
           setConnection(undefined);
-          alert("User not found");
         }
       } catch (error) {
         console.error(error);
@@ -126,12 +138,16 @@ const ChatPage = () => {
   return (
     <div>
       <h2>{roomName}</h2>
-      <Chat
-        messages={messages}
-        sendMessage={sendMessage}
-        closeConnection={closeConnection}
-        users={users}
-      />
+      {!errorMessage ? (
+        <Chat
+          messages={messages}
+          sendMessage={sendMessage}
+          closeConnection={closeConnection}
+          users={users}
+        />
+      ) : (
+        <ErrorMessage>{errorMessage}</ErrorMessage>
+      )}
     </div>
   );
 };

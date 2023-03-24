@@ -22,6 +22,7 @@ namespace ChatService.Controllers
         {
             var messages = await _context.Messages.Where(m=>m.RoomId == roomId).Include(m => m.User).ToListAsync();
             if (messages is null) return BadRequest("Unable to get messages");
+
             return Ok(messages);
         }
     }
