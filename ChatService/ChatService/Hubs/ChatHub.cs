@@ -55,8 +55,10 @@ namespace ChatService.Hubs
 
         public async Task<bool> JoinRoom(UserConnectionDTO newUserConnection)
         {
+            throw new HubException( message:"Woops");
+            //throw new HubException("breaking the thing");
             var userIdString = Context.User.FindFirstValue(ClaimTypes.GroupSid);
-
+            if(userIdString == null) throw new HubException("mainError", new HubException("reason"));
             if (!int.TryParse(userIdString, out int userId)) return false;
             if (userId != 0)
             {

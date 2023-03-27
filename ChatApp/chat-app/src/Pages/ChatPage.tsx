@@ -88,6 +88,7 @@ const ChatPage = () => {
             },
           ]);
         });
+
         connection.on("UsersInRoom", (users) => {
           setUsers(users);
         });
@@ -99,17 +100,26 @@ const ChatPage = () => {
         });
         await connection.start();
         const userConnection = { roomId: parseInt(room), token: user };
-        console.log(userConnection);
 
         if (await connection.invoke("JoinRoom", userConnection))
           setConnection(connection);
         else {
           setConnection(undefined);
         }
-      } catch (error) {
-        console.error(error);
-        toastyErrorMessage("Unauthorized");
-        setToken(null);
+      } catch (error: any) {
+        if (error.errorType === "FailedToNegotiateWithServerError") {
+          toastyErrorMessage("Unauthorized");
+          // TODO: try refreshing the token
+          setToken(null);
+        } else if (error.message.includes("HubException")) {
+          if (error.message.includes("noUserId")) {
+            toastyErrorMessage("Unauthorized");
+          } else if (error.message.includes("noRoomId")) {
+            toastyErrorMessage("No room found");
+          }
+        } else {
+          toastyErrorMessage("An error occured, please try again");
+        }
       }
     }
   };
