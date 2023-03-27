@@ -55,11 +55,9 @@ namespace ChatService.Hubs
 
         public async Task<bool> JoinRoom(UserConnectionDTO newUserConnection)
         {
-            throw new HubException( message:"Woops");
-            //throw new HubException("breaking the thing");
             var userIdString = Context.User.FindFirstValue(ClaimTypes.GroupSid);
-            if(userIdString == null) throw new HubException("mainError", new HubException("reason"));
-            if (!int.TryParse(userIdString, out int userId)) return false;
+
+            if (!int.TryParse(userIdString, out int userId)) throw new HubException("noUserId");
             if (userId != 0)
             {
                 // get username from db
@@ -68,7 +66,10 @@ namespace ChatService.Hubs
                 userConnection.UserId = (int)userId;
                 await Groups.AddToGroupAsync(Context.ConnectionId, userConnection.RoomId.ToString());
 
-                var roomName = (await _roomRepository.GetRoom(userConnection.RoomId)).Name;
+                Room? room = await _roomRepository.GetRoom(userConnection.RoomId);
+                if(room is null) throw new HubException("noRoomId");
+
+                var roomName = room.Name;
 
                 _connections[Context.ConnectionId] = userConnection;
 
@@ -84,7 +85,7 @@ namespace ChatService.Hubs
             }
             else
             {
-                return false;
+                throw new HubException("noUserId");
             }
 
         }
